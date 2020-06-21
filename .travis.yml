@@ -1,7 +1,8 @@
-sudo:required
+language: generic
+sudo: required
 services:
   - docker
 before-install:
   - docker build -t nobles/docker-react -f Dockerfile.dev .
 script:
-  - docker run nobles/docker-react npm run test -- --coverage
+  - docker run -e CI=true nobles/docker-react npm run test
